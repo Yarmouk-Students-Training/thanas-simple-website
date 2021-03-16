@@ -1,1 +1,26 @@
-{}
+{
+  "scripts": {
+    "start": "node server.js"
+  },
+  "name": "node-crash-course",
+  "description": "hello",
+  "version": "1.0.0",
+  "main": "server.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Yarmouk-Students-Training/thanas-simple-website.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Yarmouk-Students-Training/thanas-simple-website/issues"
+  },
+  "homepage": "https://github.com/Yarmouk-Students-Training/thanas-simple-website#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "lodash": "^4.17.21"
+  }
+}

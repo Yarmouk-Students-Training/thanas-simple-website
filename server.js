@@ -1,11 +1,12 @@
 const http = require('http');
 const fs = require('fs');
-
+const _ = require('lodash');
 const myServer = http.createServer((req , res) => {
-     console.log('a request has been made');
+     console.log('A request has been made');
     /*console.log(req);
     console.log(req.url , req.method); */
-
+    const num = _.random(0,10);
+    console.log(num);
     //--------setting the header--------
 
      res.setHeader('Content-Type' , 'text/html');

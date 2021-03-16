@@ -1,0 +1,65 @@
+HTTP Request Methods – What are HTTP Requests?
+HTTP Request Methods
+The internet boasts a vast array of resources hosted on different servers. For you to access these resources, your browser needs to be able to send a request to the servers and display the resources for you. HTTP (Hypertext Transfer Protocol), is the underlying format that is used to structure request and responses for effective communication between a client and a server. The message that is sent by a client to a server is what is known as an HTTP request. When these requests are being sent, clients can use various methods.
+
+Therefore, HTTP request methods are the assets that indicate the specific desired action to be performed on a given resource. Each method implements a distinct semantic, but there are some standard features shared by the various HTTP request methods.
+
+What Are HTTP Request Methods?
+An HTTP request is an action to be performed on a resource identified by a given Request-URL. Request methods are case-sensitive, and should always be noted in upper case. There are various HTTP request methods, but each one is assigned a specific purpose.
+
+How Do HTTP Requests Work?
+HTTP requests work as the intermediary transportation method between a client/application and a server. The client submits an HTTP request to the server, and after internalizing the message, the server sends back a response. The response contains status information about the request.
+
+What Are the Various Types of HTTP Request Methods?
+GET
+GET is used to retrieve and request data from a specified resource in a server. GET is one of the most popular HTTP request techniques. In simple words, the GET method is used to retrieve whatever information is identified by the Request-URL.
+
+Read more about GET.
+
+HEAD
+The HEAD technique requests a reaction that is similar to that of GET request, but doesn’t have a message-body in the response. The HEAD request method is useful in recovering meta-data that is written according to the headers, without transferring the entire content. The technique is commonly used when testing hypertext links for accessibility, validity, and recent modification.
+
+POST
+Another popular HTTP request method is POST. In web communication, POST requests are utilized to send data to a server to create or update a resource.  The information submitted to the server with POST request method is archived in the request body of the HTTP request. The HTTP POST method is often used to send user-generated data to a server. One example is when a user uploads a profile photo.
+
+Read more about POST.
+
+PUT
+PUT is similar to POST as it is used to send data to the server to create or update a resource. The difference between the two is that PUT requests are idempotent. This means that if you call the same PUT requests multiple times, the results will always be the same.
+
+DELETE
+Just as it sounds, the DELETE request method is used to delete resources indicated by a specific URL. Making a DELETE request will remove the targeted resource.
+
+PATCH
+A PATCH request is similar to POST and PUT. However, its primary purpose is to apply partial modifications to the resource. And just like a POST request, the PATCH request is also non-idempotent. Additionally, unlike POST and PUT which require a full user entity, with PATCH requests, you may only send the updated username.
+
+Read more about PATCH.
+
+TRACE
+TRACE requests are used to invoke a remote, application loop-back test along the path to the target resource. The TRACE method allows clients to view whatever message is being received at the other end of the request chain so that they can use the information for testing or diagnostic functions.
+
+CONNECT
+The CONNECT request method is used by the client to create a network connection to a web server over a particular HTTP. A good example is SSL tunneling. In a nutshell, CONNECT request establishes a tunnel to the server identified by a specific URL.
+
+ 
+
+HTTP PUT vs POST Request Methods
+Both PUT and POST request methods are used to facilitate data transmission between a client and a server, and despite having a similar role of sending data to create and update resources, they have their subtle differences as shown in the following table.
+
+PUT	POST
+It is idempotent, meaning that putting a resource twice will have no effect	It is not idempotent, and thus calling a POST request repeatedly is discouraged
+Identity is selected by the client	Identity is returned by the server
+Operates as specific	Operates as abstract
+ 
+
+HTTP GET vs POST
+Now that we have an idea of what GET and POST requests are, let’s compare the two;
+
+GET	POST
+Parameters in this method are saved in the browser’s history	Parameters are not archived in the browser history or other web server logs
+Can be bookmarked	Cannot be bookmarked
+Features a restriction on data length. This is because the GET method adds data to the URL for it to be sent, and  we know the maximum URL length is 2048 characters	There are no restriction on data length
+There is no impact when you hit the reload/back button.	Should you hit the reload/back button, sent data will be resubmitted
+Has restriction on data type as the only allowed data type is ASCII characters	There is no restriction on data type, and binary data is also allowed
+Information is visible to everyone in the URL	Information is not displayed in the URL thus not visible to everyone
+Can be cached	Can’t be cached

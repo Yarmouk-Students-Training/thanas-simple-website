@@ -1,0 +1,49 @@
+body{
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 0 20px;
+    font-family: 'Noto Serif', serif;
+    max-width: 1200px;
+  }
+
+   ul{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+   li{
+    list-style-type: none;
+    margin-left: 20px;
+  }
+
+  .content{
+    margin-left: 20px;
+  }
+
+  .create-blog form{
+    max-width: 400px;
+    margin: 0 auto;
+  }
+  .create-blog input,
+  .create-blog textarea{
+    display: block;
+    width: 100%;
+    margin: 10px 0;
+    padding: 8px;
+  }
+  .create-blog label{
+    display: block;
+    margin-top: 24px;
+  }
+  textarea{
+    height: 120px;
+  }
+  .create-blog button{
+    margin-top: 20px;
+    background: rgb(95, 0, 19);
+    color: white;
+    padding: 6px;
+    border: 0;
+    font-size: 1.2em;
+    cursor: pointer;
+  }

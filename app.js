@@ -22,10 +22,10 @@ next();
 app.use(express.static('public'));
 app.use(express.urlencoded({extended: true}));
 app.use(morgan('dev'));
-app.use((req, res, next) => {
+/* app.use((req, res, next) => {
   res.locals.path = req.path;
   next();
-});
+}); */
 
 /* app.get('/add-blog' , (req , res) => {
   const blog = new Blog({
@@ -83,7 +83,7 @@ app.get('/about' , (req , res) => {
 /* app.get('/about-me' , (req , res) => {    
     res.redirect('/about');
     }); */
-    app.use('/blogs',blogRoutes);
+    app.use('/blogs', blogRoutes);
     
 app.use((req , res) => {
    // res.status(404).sendFile('./views/404.html' , { root : __dirname});

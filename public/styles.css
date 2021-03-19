@@ -1,63 +1,90 @@
+@import url('https://fonts.googleapis.com/css2?family=Redressed&display=swap');
 body{
     max-width: 1200px;
     margin: 20px auto;
     padding: 0 20px;
-    font-family: 'Noto Serif', serif;
+    font-family: 'Redressed', cursive;
     max-width: 1200px;
+    background-color: rgb(230,230,230);
+    
   }
 
-   ul{
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-  }
-   li{
-    list-style-type: none;
-    margin-left: 20px;
-  }
+ul{
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+ul li a {
+  text-decoration:none;
+  color:black;
+  font-size: 30px;
+}
+li{
+  list-style-type:none;
+  margin-left: 20px;
+}
+div a{
+  color:black;
+  font-weight: 300;
+  text-decoration:none;
+}
+.blogs a{
+  display: block;
+  margin: 40px 0;
+  padding-left: 30px;
+  border-left: 6px solid rgb(95,0,19);
+}
+.blogs a:hover h3{
+  color: rgb(95, 0, 19);
+}
 
-  .content{
-    margin-left: 20px;
-  }
+div h3 , div p {
+  font-size: 30px;
+}
+  
+.content{
+  margin-left: 20px;
+}
 
-  .create-blog form{
-    max-width: 400px;
-    margin: 0 auto;
-  }
-  .create-blog input,
-  .create-blog textarea{
-    display: block;
-    width: 100%;
-    margin: 10px 0;
-    padding: 8px;
-  }
-  .create-blog label{
-    display: block;
-    margin-top: 24px;
-  }
-  textarea{
-    height: 120px;
-  }
-  .create-blog button{
-    margin-top: 20px;
-    background: rgb(95, 0, 19);
-    color: white;
-    padding: 6px;
-    border: 0;
-    font-size: 1.2em;
-    cursor: pointer;
-  }
-  .details{
-    position: relative;
-  }
-  .delete{
-    position: absolute;
-    top: 0;
-    right: 0;
-    border-radius: 50%;
-    padding: 8px;
-  }
-  .delete:hover{
-    cursor: pointer;
-    box-shadow: 1px 2px 3px rgba(0,0,0,0.2);
-  }
+.create-blog form{
+  max-width: 400px;
+  margin: 0 auto;
+}
+.create-blog input,
+.create-blog textarea{
+  display: block;
+  width: 100%;
+  margin: 10px 0;
+  padding: 8px;
+}
+.create-blog label{
+  display: block;
+  margin-top: 24px;
+}
+textarea{
+  height: 120px;
+}
+.create-blog button{
+  margin-top: 20px;
+  background: rgb(95, 0, 19);
+  color: white;
+  padding: 6px;
+  border: 0;
+  font-size: 1.2em;
+  cursor: pointer;
+}
+.details{
+  position: relative;
+}
+.delete{
+  position: absolute;
+  top: 0;
+  right: 0;
+  border-radius: 50%;
+  padding: 8px;
+}
+.delete:hover{
+  cursor: pointer;
+  box-shadow: 1px 2px 3px rgba(0,0,0,0.2);
+
+}

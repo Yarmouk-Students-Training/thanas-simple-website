@@ -2,7 +2,7 @@ const express = require('express');
 const Blog = require('../models/blog.js');
 const router = express.Router();
 
-router.get('/blogs', (req, res) => {
+router.get('/', (req, res) => {
   Blog.find().sort({ createdAt: -1 })
       .then(result => {
         res.render('index', {title:'All blogs' , blogs:result });

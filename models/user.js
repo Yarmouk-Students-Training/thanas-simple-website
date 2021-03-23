@@ -36,7 +36,7 @@ module.exports = (sequelize, DataTypes) => {
        notEmpty: true
       },
     DOB: {
-      type: DataTypes.DATEONLY,
+      type: DataTypes.DATEONLY, //What format does it allow?
       allowNull: false
     },
     email: {

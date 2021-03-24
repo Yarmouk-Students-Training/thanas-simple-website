@@ -19,12 +19,6 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   user.init({
-    user_id:{
-      type: DataTypes.INTEGER.UNSIGNED,
-      primaryKey:true,
-     allowNull: false,
-     autoIncrement: true 
-    },
     first_name:{
        type: DataTypes.STRING,
        allowNull: false,
@@ -43,6 +37,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false,
       unique:true,
+      primaryKey:true,
       validate:{
         isEmail:true,
         notEmpty:true

@@ -12,22 +12,34 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate({post ,comment,reaction,relationship}) {
       // define association here
-      this.hasMany(post);
-      this.hasMany(comment);
-      this.hasMany(reaction);
+      this.hasMany(post , {foreignKey :"userId" , as: "posts"});
+      this.hasMany(comment , {foreignKey :"userId" , as: "comments"});
+      this.hasMany(reaction , {foreignKey : "userId" , as: "reactions"});
       this.belongsToMany(this , {through: relationship , as: 'user1' , foreignKey:'user2'});
     }
+    
   };
   user.init({
+    uuid:{
+      type: DataTypes.UUID,
+      defaultValue: DataTypes.UUIDV4,
+      primaryKey:true
+    },
     first_name:{
        type: DataTypes.STRING,
        allowNull: false,
-       notEmpty: true
+       validate:{
+        notNull: {msg: "A user must have a first name"},
+        notEmpty:{msg: "A first name must not be empty"}
+       }
       },
     last_name:{
        type: DataTypes.STRING,
        allowNull: false,
-       notEmpty: true
+       validate:{
+        notNull: {msg: "A user must have a last name"},
+        notEmpty:{msg: "A last name must not be empty"}
+       }
       },
     DOB: {
       type: DataTypes.DATEONLY, //What format does it allow?
@@ -37,16 +49,15 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false,
       unique:true,
-      primaryKey:true,
       validate:{
-        isEmail:true,
-        notEmpty:true
+        isEmail:{msg:"Must enter a valid email address"},
+        notEmpty:{msg:"You must enter an email"}
       }
     },
     password:{
       type: DataTypes.STRING,
+      allowNull: false,
       validate:{
-        allowNull: false,
         notEmpty:true,
         notContains:"'"
       }

@@ -11,15 +11,15 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate({post,user}) {
       // define association here
-      this.belongsTo(post);
-      this.belongsTo(user);
+      this.belongsTo(post , {foreignKey:"postId" , as: "post"});
+      this.belongsTo(user , {foreignKey: "userId" , as: "user"});
     }
   };
   reaction.init({
-    reaction_id: {
-      type: DataTypes.INTEGER.UNSIGNED,
+    reaction_uuid: {
+      type: DataTypes.UUID,
+      defaultValue: DataTypes.UUIDV4,
       primaryKey:true,
-      autoIncrement: true,
       allowNull:false
     },
     name: {

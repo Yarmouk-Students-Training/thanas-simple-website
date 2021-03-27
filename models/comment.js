@@ -1,4 +1,5 @@
 'use strict';
+const { UUIDV4 } = require('sequelize');
 const {
   Model
 } = require('sequelize');
@@ -11,14 +12,14 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate({post, user}) {
       // define association here
-      this.belongsTo(post);
-      this.belongsTo(user);
+      this.belongsTo(post, {foreignKey:"postId" , as: "post"});
+      this.belongsTo(user , {foreignKey: "userId" , as: "user"});
     }
   };
   comment.init({
-    comment_id:{ 
-      type: DataTypes.INTEGER.UNSIGNED,
-      autoIncrement:true,
+    comment_uuid:{ 
+      type: DataTypes.UUID,
+      defaultValue:DataTypes.UUIDV4,
       primaryKey:true,
       allowNull:false,
     },

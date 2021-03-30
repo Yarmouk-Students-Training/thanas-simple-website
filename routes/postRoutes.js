@@ -1,10 +1,11 @@
 const express = require('express');
 const Post = require('../models');
+const jwt = require('jsonwebtoken');
 const router = express.Router();
 router.use(express.json());
 
 //to get all posts
-router.get('/', async (req, res) => {
+router.get('/', authenticateToken,async (req, res) => {
     try{
         const allPosts = await Post.post.findAll({include : 'user'})
         return res.json(allPosts);
@@ -17,7 +18,7 @@ router.get('/', async (req, res) => {
     });
 
     //to make a new post
-router.post('/', async(req,res) => {
+router.post('/', authenticateToken,async(req,res) => {
     const {userUuid , content} = req.body
     console.log(req.body);
      try{
@@ -32,7 +33,7 @@ router.post('/', async(req,res) => {
 });
 
 //to get a specific post and it's corresponding user, comments and reactions
-router.get('/:postid/users/:userid', async (req,res) => {
+router.get('/:postid/users/:userid',async (req,res) => {
 try{
     const id = req.params.id;
     const somePost = await Post.post.findOne({id,
@@ -46,7 +47,7 @@ catch(err){
 });
 
 //delete a specific post 
-router.delete('/:postid' , async (req,res) => {
+router.delete('/:postid' ,authenticateToken, async (req,res) => {
     const post_id = req.params.post_id;
     try{
         const somePost = await Post.post.findOne({post_id})
@@ -60,7 +61,7 @@ router.delete('/:postid' , async (req,res) => {
 });
 
 //to edit a specific post
-router.put('/:postid' , async(req,res) => {
+router.put('/:postid' , authenticateToken,async(req,res) => {
     const {content}=req.body;
     try{
         const post_id = req.params.post_id
@@ -74,5 +75,17 @@ router.put('/:postid' , async(req,res) => {
         return res.status(500).json(err);
     }
 });
+
+function authenticateToken(req,res,next) {
+    const authHeader = req.headers['authorization'];
+    const token = authHeader && authHeader.split(' ')[1];
+    if (token == null){
+        return res.sendStatus(403);
+    }
+    jwt.verify(token , process.env.ACCESS_TOKEN_SECRET , (err , user) => {
+        req.user = user
+        next();
+    })
+    }
 
         module.exports = router;

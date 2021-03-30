@@ -1,10 +1,13 @@
 const express = require('express');
 const User = require('../models');
+const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
+require('dotenv').config();
 const router = express.Router();
 router.use(express.json());
 
 //to get a specific user page
-router.get('/:uuid' , async (req,res) => {
+router.get('/:uuid' , authenticateToken,async (req,res) => {
 
     try{
         const uuid = req.params.uuid
@@ -22,7 +25,8 @@ router.get('/:uuid' , async (req,res) => {
 router.post('/' , async (req,res) => {    
   const {first_name , last_name , DOB , email , password , gender} = req.body;
 try{
-    const newUser = await User.user.create({first_name , last_name , DOB , email , password , gender})
+    const hashedPassword = await bcrypt.hash(req.body.password ,10);
+    const newUser = await User.user.create({first_name , last_name , DOB , email , password: hashedPassword , gender})
     return res.json(newUser);
 }
 catch(err){
@@ -32,7 +36,7 @@ return res.status(500).json(err);
 });
 
 //to delete an account
-router.delete('/:userid' , async (req,res) => {
+router.delete('/:userid' ,authenticateToken, async (req,res) => {
     const uuid = req.params.uuid;
     try{
         const someUser = await User.user.findOne({uuid})
@@ -46,7 +50,7 @@ router.delete('/:userid' , async (req,res) => {
 });
 
 //to edit an account info
-router.put('/:userid' , async (req,res) => {
+router.put('/:userid' ,authenticateToken, async (req,res) => {
     const {first_name , last_name , DOB , email , password , gender}=req.body;
     try{
         const uuid = req.params.uuid
@@ -65,5 +69,19 @@ router.put('/:userid' , async (req,res) => {
         return res.status(500).json(err);
     }
 });
+
+function authenticateToken(req,res,next) {
+const authHeader = req.headers.authorization;
+const token = authHeader && authHeader.split(' ')[1];
+ if (token == null){
+    console.log(token)
+    return res.sendStatus(403);
+}
+jwt.verify(token , process.env.ACCESS_TOKEN_SECRET , (err , user) => {
+    console.log(req.user);
+    req.user = user
+    next();
+}) 
+}
 
 module.exports = router;
